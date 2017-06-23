@@ -23,6 +23,7 @@ PORT = 5672
 USERID = 'guest'
 PASSWORD = 'guest'
 HOSTNAME = 'localhost'
+HOST_REDIS = 'redis'
 VIRTUAL_HOST = '/'
 MQ_TYPE = 'amqp'
 REDIS_PORT = 6379
@@ -62,7 +63,7 @@ def get_connection_amqp():
 
 def get_connection_redis():
     import redis
-    return redis.StrictRedis(host=config.get('ckan.harvest.mq.hostname', HOSTNAME),
+    return redis.StrictRedis(host=config.get('ckan.harvest.mq.hostname', HOST_REDIS),
                           port=int(config.get('ckan.harvest.mq.port', REDIS_PORT)),
                           db=int(config.get('ckan.harvest.mq.redis_db', REDIS_DB)))
 
